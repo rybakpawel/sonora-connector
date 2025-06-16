@@ -1,6 +1,7 @@
-from fastapi import FastAPI, UploadFile, File, HTTPException
+from fastapi import FastAPI, HTTPException
 from fastapi.responses import StreamingResponse
 import requests
+import base64
 from io import BytesIO
 
 app = FastAPI(title="Sonora Connector API")
@@ -8,9 +9,8 @@ app = FastAPI(title="Sonora Connector API")
 DJANGO_API_URL = "http://sonora-backend:8000/api/ai/search_for_answer/"
 
 @app.post("/ask-audio/")
-async def ask_audio(audio: UploadFile = File(...)):
-    print(f"Otrzymano plik audio: {audio.filename}")
-    print(f"Typ MIME: {audio.content_type}")
+async def ask_audio(data: str):
+    print(f"Otrzymano plik audio: {data}")
 
     # files = {"audio": (audio.filename, await audio.read(), audio.content_type)}
 

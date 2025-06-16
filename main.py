@@ -3,14 +3,20 @@ from fastapi.responses import StreamingResponse
 import requests
 import base64
 from io import BytesIO
+from pydantic import BaseModel
 
 app = FastAPI(title="Sonora Connector API")
 
 DJANGO_API_URL = "http://sonora-backend:8000/api/ai/search_for_answer/"
 
+class AudioPayload(BaseModel):
+    filename: str
+    contentType: str
+    audioBase64: str
+
 @app.post("/ask-audio/")
-async def ask_audio(audioBase64: str):
-    print(f"Otrzymano plik audio: {audioBase64}")
+async def ask_audio(payload: AudioPayload):
+    print(f"Otrzymano plik audio: {payload.filename}")
 
     # files = {"audio": (audio.filename, await audio.read(), audio.content_type)}
 

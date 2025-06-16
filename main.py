@@ -9,8 +9,8 @@ app = FastAPI(title="Sonora Connector API")
 DJANGO_API_URL = "http://sonora-backend:8000/api/ai/search_for_answer/"
 
 @app.post("/ask-audio/")
-async def ask_audio(data: str):
-    print(f"Otrzymano plik audio: {data}")
+async def ask_audio(audioBase64: str):
+    print(f"Otrzymano plik audio: {audioBase64}")
 
     # files = {"audio": (audio.filename, await audio.read(), audio.content_type)}
 

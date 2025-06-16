@@ -18,6 +18,13 @@ class AudioPayload(BaseModel):
 async def ask_audio(payload: AudioPayload):
     print(f"Otrzymano plik audio: {payload.filename}")
 
+    response = {
+        "success": True,
+        "answer": "odpowiedź"
+    }
+
+    return response
+
     # files = {"audio": (audio.filename, await audio.read(), audio.content_type)}
 
     # try:

@@ -20,7 +20,7 @@ async def ask_audio(payload: AudioPayload):
 
     response = {
         "success": True,
-        "answer": "odpowiedź"
+        "answer": "Tworzę nowe zapotrzebowanie zakupowe.."
     }
 
     return response

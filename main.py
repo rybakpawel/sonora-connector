@@ -21,7 +21,7 @@ async def ask_audio(payload: AudioPayload):
     response = {
         "success": True,
         "answer": "Tworzenie nowego zapotrzebowania zakupowego..",
-        "module": "Procurement"
+        "module": "Sourcing"
     }
 
     return response
